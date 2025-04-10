@@ -25,6 +25,9 @@ async def send_audio(message: Message):
 async def send_file(message: Message):
     await message.reply_document(message.document.file_id)
 
+async def send_not_audio_mp3(message: Message):
+    await message.reply_voice(message.voice.file_id)
+
 async def echo_comm(message: Message):
     await message.reply(text = message.text)
 
@@ -34,6 +37,7 @@ dp.message.register(send_photo, F.photo)
 dp.message.register(send_video, F.video)
 dp.message.register(send_audio, F.audio)
 dp.message.register(send_file, F.document)
+dp.message.register(send_not_audio_mp3, F.voice)
 dp.message.register(echo_comm)
 
 
